@@ -33,7 +33,7 @@ answers_i = []
 end
 answers_delete_index = []
 answers_i.reverse.each_with_index do |answers, i|
-  next if i == answers_i.size
+  next if i == answers_i.size - 1
   answers_i[0..(answers_i.size - i - 2)].each do |ans|
     answers_delete_index.push(answers_i.size - i - 1) if answers[0][2] % ans[0][2] == 0 && answers[1][2] % ans[1][2] == 0 && answers[2][2] % ans[2][2] == 0 && answers[0][2].div(ans[0][2]) == answers[1][2].div(ans[1][2])
   end
