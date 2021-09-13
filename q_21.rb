@@ -10,7 +10,4 @@ while o_times < 2013
   ar.push(this_ar)
   o_times += this_ar.count(0)
 end
-ar.each do |arr|
-  p arr
-end
 puts n
