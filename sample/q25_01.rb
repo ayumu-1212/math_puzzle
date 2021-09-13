@@ -1,3 +1,4 @@
+require "pry"
 N = 6
 
 max_cnt = 0
@@ -24,6 +25,7 @@ max_cnt = 0
       }
     }
     max_cnt = [max_cnt, cnt].max
+    p path if cnt == 45
   }
 }
 puts max_cnt
