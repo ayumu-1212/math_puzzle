@@ -1,3 +1,4 @@
+require "pry"
 # 配列の直積を計算
 def product(ary)
   result = ary[0]
@@ -15,6 +16,7 @@ end
 
 @memo = {1 => [1]}
 def calc(n)
+  binding.pry
   return @memo[n] if @memo.has_key?(n)
   # 直列
   result = calc(n - 1).map{|i| i + 1}
