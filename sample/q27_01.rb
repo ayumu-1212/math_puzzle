@@ -1,4 +1,5 @@
-W, H = 6, 4
+require "pry"
+W, H = 5, 3
 DIR = [[0, 1], [-1, 0], [0, -1], [1, 0]] # 移動方向
 left = [0] * H   # 縦の線を使用したかビット単位で保管
 bottom = [0] * W # 横の線を使用したかビット単位で保管
@@ -19,7 +20,11 @@ def search(x, y, dir, left, bottom)
     bottom_l[pos] |= (1 << y)      # 横の線を使用済みにする
   end
   next_x, next_y = x + DIR[dir][0], y + DIR[dir][1]
-  return 1 if (next_x == W) && (next_y == H)  # Bについたら終了
+  if (next_x == W) && (next_y == H)  # Bについたら終了
+    p left.map{|le| le.to_s(2)}
+    p bottom.map{|le| le.to_s(2)}
+    return 1
+  end
 
   cnt = 0
   # 直進
