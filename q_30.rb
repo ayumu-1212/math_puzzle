@@ -19,7 +19,7 @@ def synchro(n, t)
 end
 
 def tabletop(remain_num)
-  return @tabletop_memo[remain_num] if @tabletop_memo.has_key?(remain_num)
+  return @tabletop_memo[remain_num+1] if @tabletop_memo.has_key?(remain_num+1)
   pattern_num = 0
   Tops.each do |i|
     next_num_sum = remain_num - (i-1)
@@ -37,12 +37,12 @@ def tabletop(remain_num)
       pattern_num += values.inject(:*)
     end
   end
-  @tabletop_memo[remain_num] = pattern_num
+  @tabletop_memo[remain_num+1] = pattern_num
 end
 
 @synchros_memo = {}
 
-@tabletop_memo = {0 => 1}
+@tabletop_memo = {0 => 1, 1 => 1}
 
-tabletop(N-1)
-p @tabletop_memo[N-1]
+tabletop(N)
+p @tabletop_memo[N]
