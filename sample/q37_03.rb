@@ -1,3 +1,4 @@
+require "pry"
 # 次の目を取得する
 def next_dice(dice)
   top = dice.div(6**5)
@@ -24,3 +25,4 @@ all_dice = Array.new(6 ** 6, 0)
   end
 }
 puts all_dice.count(1)
+puts all_dice.size
