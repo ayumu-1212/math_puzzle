@@ -1,52 +1,28 @@
-" Press ? for help
+require "pry"
+N = 1234
 
-.. (up a dir)
-</programing/math_puzzle/
-▸ .git/
-▸ sample/
-  q_06.rb*
-  q_07.rb*
-  q_08.rb*
-  q_08_a.rb*
-  q_09.rb*
-  q_09_a.rb*
-  q_10.rb*
-  q_11.rb*
-  q_12.rb*
-  q_13.rb*
-  q_13_a.rb*
-  q_14.rb*
-  q_14_2.rb*
-  q_15.rb*
-  q_16.rb*
-  q_17.rb*
-  q_18.rb*
-  q_18_2.rb*
-  q_19.rb*
-  q_20.rb*
-  q_21.rb*
-  q_22.rb*
-  q_23.rb*
-  q_24.rb*
-  q_25.rb*
-  q_26.rb*
-  q_27.rb*
-  q_28.rb*
-  q_29.rb*
-  q_29_2.rb*
-  q_30.rb*
-  q_31.rb*
-  q_32.rb*
-  q_33.rb*
-  q_33_library.rb*
-  q_34.rb*
-  q_35.rb*
-  q_36.rb*
-  q_36_2.rb*
-  q_37.rb*
-  q_38.rb*
-  q_39.rb*
-  q_40.rb*
-  q_40_2.rb*
-  q_40_3.rb*
-  q_41.rb*
+def calc(n, subtotal, prev_num, depth)
+  if !(@memo.has_key?(subtotal + prev_num) && @memo[subtotal + prev_num] <= depth) && depth <= N*2
+    @memo[subtotal + prev_num] = depth
+    if subtotal + prev_num != N
+      binding.pry if subtotal == 0 && prev_num == 1024
+      # 和
+      calc(n, subtotal + prev_num, n, depth + 1)
+      # 差
+      calc(n, subtotal + prev_num, -1 * n, depth + 1)
+      # 積
+      calc(n, subtotal, prev_num * n, depth + 1)
+      # 商
+      calc(n, subtotal, prev_num / n, depth + 1) if prev_num / n != 0
+    end
+  end
+end
+
+(1..9).each do |n|
+  @memo = {}
+  #calc(n, 0, -1 * n, 1)
+  #calc(n, 0, n, 1)
+  puts "n: #{n}, times: #{@memo[N]}"
+end
+calc(2, 0, 2, 1)
+puts @memo[N]
