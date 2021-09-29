@@ -2,10 +2,10 @@ require "pry"
 N = 1234
 
 def calc(n, subtotal, prev_num, depth)
-  if !(@memo.has_key?(subtotal + prev_num) && @memo[subtotal + prev_num] <= depth) && depth <= N*2
+  if (!@memo.has_key?(subtotal + prev_num) || @memo[subtotal + prev_num] > depth) && depth <= N*2
     @memo[subtotal + prev_num] = depth
     if subtotal + prev_num != N
-      binding.pry if subtotal == 0 && prev_num == 1024
+      binding.pry if subtotal == 0 && depth == 10
       # 和
       calc(n, subtotal + prev_num, n, depth + 1)
       # 差
