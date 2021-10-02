@@ -20,3 +20,5 @@ end
 (2**(N**2)-1).times do |bit|
   search(bit, N, N, true)
 end
+
+puts @memo
