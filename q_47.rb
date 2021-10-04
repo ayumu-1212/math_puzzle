@@ -1,3 +1,4 @@
+require "pry"
 
 # bitに当てはめて探索
 def search(bit, width, height, is_right)
@@ -19,4 +20,7 @@ end
   search(bit, N, N, true)
 end
 
+@memo = {}
 puts @memo
+
+puts @memo.size
