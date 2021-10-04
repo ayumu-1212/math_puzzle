@@ -1,6 +1,3 @@
-require "pry"
-
-N = 2
 
 # bitに当てはめて探索
 def search(bit, width, height, is_right)
