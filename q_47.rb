@@ -10,7 +10,14 @@ def search(bit, width, height, is_right)
         cnt += bit % 2
         bit = bit / 2
       end
+      if cnt == width
+        width -= 1
+      end
       count.push(cnt)
+    end
+    count.each_with_index do |c, i|
+      if c == width
+      end
     end
   else
   end
@@ -20,7 +27,3 @@ end
   search(bit, N, N, true)
 end
 
-@memo = {}
-puts @memo
-
-puts @memo.size
