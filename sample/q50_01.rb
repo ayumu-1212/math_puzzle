@@ -7,6 +7,8 @@ USABLE = 2                  # 使用可能な回数
 def search(x, y)
   if (x == W) && (y == H) then # Bについたら最大値を確認して終了
     @max = [@h.inject(:+) + @v.inject(:+), @max].max
+    p @h if @h.inject(:+) + @v.inject(:+) == 25
+    p @v if @h.inject(:+) + @v.inject(:+) == 25
     return
   end
   if @h[y] < USABLE then    # 水平方向に移動可能なとき
