@@ -1,4 +1,4 @@
-N = 8 # 砂時計の数
+N = 4 # 砂時計の数
 GOAL = [1] * N # すべて1になれば次に同時に下に落ちる
 
 count = 0
@@ -8,6 +8,7 @@ count = 0
   log = {} # 同じ状態になるかをチェックするログ
   while log[hourglass] != pos  # 過去に同じ状態があれば終了
     if hourglass == GOAL then  # 目標の形に達したら終了
+      p init
       count += 1
       break
     end
