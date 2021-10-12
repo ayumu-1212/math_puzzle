@@ -1,0 +1,4 @@
+TASTES = 5
+CANDIES = 6
+
+
