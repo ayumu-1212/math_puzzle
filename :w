@@ -14,9 +14,8 @@ rows.push(row_bar_max)
 cols.push(col_bar_max)
 
 def add_col_bar(h, w, cols, rows)
+  
 end
 def add_row_bar(h, w, cols, rows)
 
 end
-
-
