@@ -1,10 +1,10 @@
 require "pry"
-M = 3
-N = 2
+M = 6
+N = 5
 
 UP, RIGHT, DOWN, LEFT = 0b1000, 0b0100, 0b0010, 0b0001
 BASIC_VECTOR = [UP, RIGHT, DOWN, LEFT]
-INDEX_VECTOR = [M+2, -1, -M-2, +2]
+INDEX_VECTOR = [M+2, -1, -M-2, 1]
 def one_stroke(mn, placement)
   m, n = mn % M, mn / M
   placement_index = (n+1)*(M+2) + m+1
@@ -12,7 +12,6 @@ def one_stroke(mn, placement)
     if mn < M*N
       one_stroke(mn+1, placement)
     else
-      p placement
       @count += 1
     end
   else
@@ -20,6 +19,7 @@ def one_stroke(mn, placement)
     empty_count = 0
     this_bit = 0
     confirm_count = 0
+    # binding.pry if placement[7] == 1 && placement[11] == 1
     4.times do |i|
       if placement[placement_index + INDEX_VECTOR[i]] == 0
         empty_vector += BASIC_VECTOR[i]
@@ -34,17 +34,20 @@ def one_stroke(mn, placement)
       if empty_count == 2
         placement[placement_index] = empty_vector
         one_stroke(mn+1, placement)
+        placement[placement_index] = 0
       end
     when 1 then
       4.times do |i|
         if empty_vector & BASIC_VECTOR[i] == BASIC_VECTOR[i]
           placement[placement_index] = this_bit + BASIC_VECTOR[i]
           one_stroke(mn+1, placement)
+          placement[placement_index] = 0
         end
       end
     when 2 then
       placement[placement_index] = this_bit
       one_stroke(mn+1, placement)
+      placement[placement_index] = 0
     else
     end
   end
