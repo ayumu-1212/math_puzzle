@@ -1,5 +1,5 @@
 # パネルの数を設定
-W, H = 4, 3
+W, H = 1, 2
 # ビット反転用の値
 XOR_ROW = (1 << (W + 1)) - 1
 
@@ -15,7 +15,9 @@ def search(up, y, odds)
 
   if y == H then       # 最終行の場合はチェックして終了
     odds += (row ^ up).to_s(2).count("1")   # 奇数の数をカウント
-    return 1 if (odds == 0) || (odds == 2)  # 0か2個なら対象
+    if (odds == 0) || (odds == 2)  # 0か2個なら対象
+      return 1
+    end
     return 0
   end
   cnt = 0
